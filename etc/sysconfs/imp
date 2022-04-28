@@ -1,10 +1,9 @@
 (use-modules (gnu))
-(use-service-modules
- cups
- desktop
- networking
- ssh
- xorg)
+(use-service-modules cups
+		     desktop
+		     networking
+		     ssh
+		     xorg)
 
 (define %my-desktop-services
   (modify-services
@@ -51,6 +50,8 @@
 	 (specification->package "emacs-exwm")
 	 (specification->package "emacs-magit")
 	 (specification->package "emacs-vscode-dark-plus")
+	 (specification->package "emacs-sanityinc-tomorrow")
+	 (specification->package "emacs-yasnippet")
 	 (specification->package "emacs-kefir-stuff")
 	 (specification->package
 	  "emacs-desktop-environment")
