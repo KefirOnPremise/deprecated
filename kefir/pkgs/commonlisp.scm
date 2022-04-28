@@ -36,7 +36,8 @@
        `(("libtool" ,libtool)
 	 ("autoconf" ,autoconf)
 	 ("automake" ,automake)
-	 ("gcc-toolchain" ,gcc-toolchain)))
+	 ("gcc-toolchain" ,gcc-toolchain)
+	 ("make" ,make)))
       (arguments
        `(#:modules ((guix build utils))
 	 #:builder
