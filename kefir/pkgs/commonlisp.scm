@@ -45,7 +45,12 @@
 	   (let ((out    (assoc-ref %outputs "out")))
 	     (mkdir-p (string-append out "/lib"))
 	     (lambda _
-	       (invoke "libtoolize"))))))
+	       (invoke "libtoolize")
+	       (invoke "aclocal")
+	       (invoke "autoheader")
+	       (invoke "automake" "-a")
+	       (invoke "autoconf")
+	       (invoke "./configure"))))))
       (home-page "")
       (synopsis "")
       (description
