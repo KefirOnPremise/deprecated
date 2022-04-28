@@ -4,7 +4,8 @@
   #:use-module (guix git-download)
   #:use-module (guix build-system trivial)
   #:use-module (gnu packages autotools)
-  #:use-module (gnu packages base))
+  #:use-module (gnu packages base)
+  #:use-module (gnu packages commencement))
 
 ;; guix shell libtool autoconf automake gcc-toolchain make --
 ;; libtoolize
