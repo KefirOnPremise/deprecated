@@ -30,7 +30,7 @@
 	       (commit commit)))
 	 (file-name (git-file-name name version))
 	 (sha256
-	  (base32 "10gh1hvxq9gm29r6qzlnva7vjidd7n4kih4z2ihyvbvy9za20xqw"))))
+	  (base32 "0vlhyj4rrkb1bhl1xjf25d1nv09hzpfl6hwymqkn7h6gr2fdp8m1"))))
       (build-system trivial-build-system)
       (native-inputs
        (list libtool autoconf automake gcc-toolchain))
