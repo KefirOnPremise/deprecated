@@ -2,7 +2,9 @@
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (guix packages)
   #:use-module (guix git-download)
-  #:use-module (guix build-system trivial))
+  #:use-module (guix build-system trivial)
+  #:use-module (gnu packages autotools)
+  #:use-module (gnu packages base))
 
 ;; guix shell libtool autoconf automake gcc-toolchain make --
 ;; libtoolize
