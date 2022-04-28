@@ -32,8 +32,11 @@
 	 (sha256
 	  (base32 "0vlhyj4rrkb1bhl1xjf25d1nv09hzpfl6hwymqkn7h6gr2fdp8m1"))))
       (build-system trivial-build-system)
-      (propagated-inputs
-       (list libtool autoconf automake gcc-toolchain))
+      (inputs
+       `(("libtool" ,libtool)
+	 ("autoconf" ,autoconf)
+	 ("automake" ,automake)
+	 ("gcc-toolchain" ,gcc-toolchain)))
       (arguments
        `(#:modules ((guix build utils))
 	 #:builder
