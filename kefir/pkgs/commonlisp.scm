@@ -26,7 +26,7 @@
        (origin
 	 (method git-fetch)
 	 (uri (git-reference
-	       (url "")
+	       (url "https://github.com/lem-project/async-process")
 	       (commit commit)))
 	 (file-name (git-file-name name version))
 	 (sha256
