@@ -38,7 +38,7 @@
 	 (begin
            (use-modules (guix build utils))
 	   (let ((out    (assoc-ref %outputs "out")))
-	     (mkdir-p (string-append out "/bin"))
+	     (mkdir-p (string-append out "/lib"))
 	     (invoke "libtoolize")))))
       (home-page "")
       (synopsis "")
