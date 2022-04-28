@@ -32,7 +32,7 @@
 	 (sha256
 	  (base32 "0vlhyj4rrkb1bhl1xjf25d1nv09hzpfl6hwymqkn7h6gr2fdp8m1"))))
       (build-system trivial-build-system)
-      (native-inputs
+      (inputs
        (list libtool autoconf automake gcc-toolchain))
       (arguments
        `(#:modules ((guix build utils))
