@@ -37,7 +37,7 @@
 	 ("autoconf" ,autoconf)
 	 ("automake" ,automake)
 	 ("gcc-toolchain" ,gcc-toolchain)
-	 ("make" ,make)))
+	 ("make" ,gnu-make)))
       (arguments
        `(#:modules ((guix build utils))
 	 #:builder
