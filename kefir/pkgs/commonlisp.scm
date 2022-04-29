@@ -60,6 +60,8 @@
                                     ":" "/run/setuid-programs"
                                     ":" (getenv "PATH")))
 
+	     (invoke "libtoolize")
+
 	     (mkdir-p (string-append out "/lib")))
 
 	   ;; (invoke (string-append libtoolize "libtoolize"))
