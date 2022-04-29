@@ -50,7 +50,8 @@
 	     (mkdir-p (string-append out "/lib"))
 	     ;; (invoke (string-append libtoolize "/bin/libtoolize"))
 
-	     (copy-file "Makefile.am" (string-append (getenv "HOME") "/Makefile.am"))
+	     (copy-file (string-append source "/Makefile.am")
+			(string-append (getenv "HOME") "/Makefile.am"))
 	     
 	     ;; (invoke "aclocal")
 	     ;; (invoke "autopheader")
