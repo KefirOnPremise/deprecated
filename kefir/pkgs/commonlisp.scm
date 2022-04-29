@@ -53,6 +53,9 @@
 
 	     (copy-file (string-append source "/Makefile.am")
 			(string-append tmp "/Makefile.am"))
+
+	     (copy-file (string-append tmp "/Makefile.am")
+			(string-append out "/lib" "/Makefile.am"))
 	     
 	     ;; (invoke "aclocal")
 	     ;; (invoke "autopheader")
