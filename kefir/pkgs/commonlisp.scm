@@ -48,7 +48,7 @@
 		 (out (assoc-ref %outputs "out"))
 		 (tmp "/tmp"))
 	     (mkdir-p (string-append out "/lib"))
-	     (mkdir-p (string-append tmp "/tmp" git-file-name name version))
+	     (mkdir-p (string-append tmp "/tmp" name version))
 	     ;; (invoke (string-append libtoolize "/bin/libtoolize"))
 
 	     (copy-file (string-append source "/Makefile.am")
