@@ -32,7 +32,7 @@
 	 (sha256
 	  (base32 "0vlhyj4rrkb1bhl1xjf25d1nv09hzpfl6hwymqkn7h6gr2fdp8m1"))))
       (build-system trivial-build-system)
-      (native-inputs
+      (inputs
        `(("libtool" ,libtool)
 	 ("autoconf" ,autoconf)
 	 ("automake" ,automake)
@@ -63,7 +63,8 @@
 
 	     (chdir tmp)
 
-	     (invoke (string-append libtoolize "/bin/libtoolize"))
+	     ;; (invoke (string-append libtoolize "/bin/libtoolize"))
+	     (invoke "libtoolize")
 
 	     ;; (let ((copyFile (lambda (file)
 	     ;; 		       (copy-file (string-append tmp "/" file)
