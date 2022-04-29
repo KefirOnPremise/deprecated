@@ -46,6 +46,7 @@
 	   (let ((source (assoc-ref %build-inputs "source"))
 		 (libtoolize (assoc-ref %build-inputs "libtool"))
 		 (out (assoc-ref %outputs "out")))
+	     (setenv "HOME" "/tmp")
 	     (mkdir-p (string-append out "/lib"))
 	     (invoke (string-append libtoolize "/bin/libtoolize") ".")
 	     ;; (invoke "aclocal")
