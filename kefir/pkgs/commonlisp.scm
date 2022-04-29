@@ -64,7 +64,7 @@
 	     (chdir tmp)
 
 	     ;; (invoke (string-append libtoolize "/bin/libtoolize"))
-	     (invoke "libtoolize")
+	     (invoke "ls")
 
 	     ;; (let ((copyFile (lambda (file)
 	     ;; 		       (copy-file (string-append tmp "/" file)
