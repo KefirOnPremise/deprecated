@@ -43,7 +43,7 @@
 	 #:builder
 	 (begin
            (use-modules (guix build utils))
-	   (let ((out    (assoc-ref %outputs "out")))
+	   (let ((out (assoc-ref %outputs "out")))
 	     (mkdir-p (string-append out "/lib"))
 	     (lambda _
 	       (invoke "libtoolize")
@@ -51,7 +51,11 @@
 	       (invoke "autoheader")
 	       (invoke "automake" "-a")
 	       (invoke "autoconf")
-	       (invoke "./configure"))))))
+	       (invoke "./configure")
+	       (invoke "make"))
+	     (copy-file ".libs/libasyncprocess.so"
+			(string-append out "/lib"))
+	     ))))
       (home-page "")
       (synopsis "")
       (description
