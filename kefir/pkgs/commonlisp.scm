@@ -48,13 +48,13 @@
 	     (lambda _
 	       (invoke "libtoolize")
 	       (invoke "aclocal")
-	       (invoke "autoheader")
+	       (invoke "autopheader")
 	       (invoke "automake" "-a")
 	       (invoke "autoconf")
 	       (invoke "./configure")
 	       (invoke "make"))
 	     (copy-file ".libs/libasyncprocess.so"
-			(string-append out "/lib"))
+			(string-append out "/lib/"))
 	     ))))
       (home-page "")
       (synopsis "")
