@@ -47,6 +47,7 @@
 
 	   ;; copy source
            (copy-recursively (assoc-ref %build-inputs "source") ".")
+	   (mkdir-p (string-append (assoc-ref %outputs "out") "/lib"))
 	   ;; patch-shebang phase
            ;; (setenv "PATH"
            ;;         (string-append (assoc-ref %build-inputs "libtool") "/bin"
