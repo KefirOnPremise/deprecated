@@ -45,13 +45,14 @@
            (use-modules (guix build utils))
 	   (let ((source (assoc-ref %build-inputs "source"))
 		 (libtoolize (assoc-ref %build-inputs "libtool"))
-		 (out (assoc-ref %outputs "out")))
-	     (setenv "HOME" "/tmp")
+		 (out (assoc-ref %outputs "out"))
+		 (tmp "/tmp"))
 	     (mkdir-p (string-append out "/lib"))
+	     (mkdir-p (string-append tmp "/tmp" git-file-name name version))
 	     ;; (invoke (string-append libtoolize "/bin/libtoolize"))
 
 	     (copy-file (string-append source "/Makefile.am")
-			(string-append (getenv "HOME") "/Makefile.am"))
+			(string-append tmp "/Makefile.am"))
 	     
 	     ;; (invoke "aclocal")
 	     ;; (invoke "autopheader")
