@@ -16,6 +16,7 @@
 ;; ./configure
 ;; make
 
+;; (define-public hosts
 (define-public async-process
   (let ((commit "8f059c6f937be2caad6392d90f685bf35a92a5f2")
         (revision "0"))
@@ -43,28 +44,44 @@
 	 #:builder
 	 (begin
            (use-modules (guix build utils))
-	   (let ((source (assoc-ref %build-inputs "source"))
-		 (libtoolize (assoc-ref %build-inputs "libtool"))
-		 (out (assoc-ref %outputs "out"))
-		 (tmp "/tmp"))
-	     (mkdir-p (string-append out "/lib"))
-	     (mkdir-p (string-append tmp "/tmp-" source))
 
-	     (let ((copyFile (lambda (file)
-			       (copy-file (string-append source "/" file)
-					  (string-append tmp "/" file)))))
-	       (copyFile "/Makefile.am")
-	       (copyFile "/configure.ac")
-	       (mkdir-p (string-append tmp "/src"))
-	       (copyFile "/src/async-process.asd")
-	       (copyFile "/src/async-process.c")
-	       (copyFile "/src/async-process.h")
-	       (copyFile "/src/async-process.lisp"))
+	   ;; copy source
+           (copy-recursively (assoc-ref %build-inputs "source") ".")
+	   ;; patch-shebang phase
+           (setenv "PATH"
+                   (string-append (assoc-ref %build-inputs "libtool") "/bin"
+                                  ":" (assoc-ref %build-inputs "awk") "/bin"
+                                  ":" (assoc-ref %build-inputs "autoconf") "/bin"
+                                  ":" (assoc-ref %build-inputs "automake") "/bin"
+                                  ":" (assoc-ref %build-inputs "gcc-toolchain") "/bin"
+                                  ":" (assoc-ref %build-inputs "make") "/bin"
+                                  ":" "/run/setuid-programs"
+                                  ":" (getenv "PATH")))
+	   (invoke (string-append libtoolize "libtoolize"))
 
-	     (chdir tmp)
+	   )))
+	   ;; (let ((source (assoc-ref %build-inputs "source"))
+	   ;; 	 (libtoolize (assoc-ref %build-inputs "libtool"))
+	   ;; 	 (out (assoc-ref %outputs "out"))
+	   ;; 	 (tmp "/tmp"))
+	   ;;   (mkdir-p (string-append out "/lib"))
+	   ;;   (mkdir-p (string-append tmp "/tmp-" source))
 
-	     ;; (invoke (string-append libtoolize "/bin/libtoolize"))
-	     (invoke "ls")
+	   ;;   (let ((copyFile (lambda (file)
+	   ;; 		       (copy-file (string-append source "/" file)
+	   ;; 				  (string-append tmp "/" file)))))
+	   ;;     (copyFile "/Makefile.am")
+	   ;;     (copyFile "/configure.ac")
+	   ;;     (mkdir-p (string-append tmp "/src"))
+	   ;;     (copyFile "/src/async-process.asd")
+	   ;;     (copyFile "/src/async-process.c")
+	   ;;     (copyFile "/src/async-process.h")
+	   ;;     (copyFile "/src/async-process.lisp"))
+
+	   ;;   (chdir tmp)
+
+	   ;;   ;; (invoke (string-append libtoolize "/bin/libtoolize"))
+	   ;;   (invoke "ls")
 
 	     ;; (let ((copyFile (lambda (file)
 	     ;; 		       (copy-file (string-append tmp "/" file)
@@ -89,7 +106,6 @@
 	     ;; (invoke "make")
 	     ;; (copy-file "/.libs/libasyncprocess.so"
 	     ;; 		(string-append out "/lib/"))
-	     ))))
       (home-page "")
       (synopsis "")
       (description
