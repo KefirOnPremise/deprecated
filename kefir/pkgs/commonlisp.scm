@@ -38,7 +38,9 @@
 	 ("autoconf" ,autoconf)
 	 ("automake" ,automake)
 	 ("gcc-toolchain" ,gcc-toolchain)
-	 ("gnu-make" ,gnu-make)))
+	 ("gnu-make" ,gnu-make)
+	 ("grep" ,grep)
+	 ("sed" ,sed)))
       (arguments
        `(#:modules ((guix build utils))
 	 #:builder
@@ -57,6 +59,8 @@
                                     ":" (assoc-ref %build-inputs "automake") "/bin"
                                     ":" (assoc-ref %build-inputs "gcc-toolchain") "/bin"
                                     ":" (assoc-ref %build-inputs "gnu-make") "/bin"
+				    ":" (assoc-ref %build-inputs "grep") "/bin"
+				    ":" (assoc-ref %build-inputs "sed") "/bin"
                                     ":" "/run/setuid-programs"
                                     ":" (getenv "PATH")))
 
