@@ -54,7 +54,7 @@
 	       (invoke "autoconf")
 	       (invoke "./configure")
 	       (invoke "make"))
-	     (copy-file (string-append source "/.libs/libasyncprocess.so")
+	     (copy-file "/.libs/libasyncprocess.so"
 			(string-append out "/lib/"))
 	     ))))
       (home-page "")
