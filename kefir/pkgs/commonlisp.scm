@@ -45,9 +45,12 @@
 	 (begin
            (use-modules (guix build utils))
 
-	   ;; copy source
-           (copy-recursively (assoc-ref %build-inputs "source") ".")
-	   (mkdir-p (string-append (assoc-ref %outputs "out") "/lib"))
+	   (let ((source (assoc-ref %build-inputs "source"))
+		 (out (assoc-ref %outputs "out")))
+	     ;; copy source
+             (copy-recursively source ".")
+	     (mkdir-p (string-append out "/lib")))
+
 	   ;; patch-shebang phase
            ;; (setenv "PATH"
            ;;         (string-append (assoc-ref %build-inputs "libtool") "/bin"
