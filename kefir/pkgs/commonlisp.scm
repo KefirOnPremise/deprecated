@@ -49,24 +49,21 @@
 		 (tmp "/tmp"))
 	     (mkdir-p (string-append out "/lib"))
 	     (mkdir-p (string-append tmp "/tmp-" source))
-	     ;; (invoke (string-append libtoolize "/bin/libtoolize"))
 
-	     ;; (copy-file (string-append source "/Makefile.am")
-	     ;; 		(string-append tmp "/Makefile.am"))
+	     (let (copyFile (lambda (file)
+			      (copy-file (string-append source "/" file)
+					 (string-append tmp "/" file))))
+	       (copyFile "/Makefile.am"))
+
+	     (let (copyFile (lambda (file)
+			      (copy-file (string-append tmp "/" file)
+					 (string-append out "/" file))))
+	       (copyFile "/Makefile.am"))
 
 	     ;; (copy-file (string-append tmp "/Makefile.am")
 	     ;; 		(string-append out "/lib" "/Makefile.am"))
 
-	     (for-each (lambda (src)
-                         (let ((dst (string-append tmp "/" (basename src))))
-                           (copy-file src dst)))
-                       (find-files source "*"))
-
-	     (for-each (lambda (src)
-                         (let ((dst (string-append out "/" (basename src))))
-                           (copy-file src dst)))
-                       (find-files tmp "*"))
-	     
+	     ;; (invoke (string-append libtoolize "/bin/libtoolize"))
 	     ;; (invoke "aclocal")
 	     ;; (invoke "autopheader")
 	     ;; (invoke "automake" "-a")
