@@ -51,11 +51,21 @@
 	     (mkdir-p (string-append tmp "/tmp-" source))
 	     ;; (invoke (string-append libtoolize "/bin/libtoolize"))
 
-	     (copy-file (string-append source "/Makefile.am")
-			(string-append tmp "/Makefile.am"))
+	     ;; (copy-file (string-append source "/Makefile.am")
+	     ;; 		(string-append tmp "/Makefile.am"))
 
-	     (copy-file (string-append tmp "/Makefile.am")
-			(string-append out "/lib" "/Makefile.am"))
+	     ;; (copy-file (string-append tmp "/Makefile.am")
+	     ;; 		(string-append out "/lib" "/Makefile.am"))
+
+	     (for-each (lambda (src)
+                         (let ((dst (string-append tmp "/" (basename src))))
+                           (copy-file src dst)))
+                       (find-files source "*"))
+
+	     (for-each (lambda (src)
+                         (let ((dst (string-append out "/" (basename src))))
+                           (copy-file src dst)))
+                       (find-files tmp "*"))
 	     
 	     ;; (invoke "aclocal")
 	     ;; (invoke "autopheader")
