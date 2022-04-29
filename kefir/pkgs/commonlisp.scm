@@ -60,7 +60,10 @@
                                     ":" "/run/setuid-programs"
                                     ":" (getenv "PATH")))
 
-	     (invoke "libtoolize")
+	     ;; (invoke "libtoolize")
+	     (invoke "autoconf")
+	     (invoke "aclocal")
+	     (invoke "automake -a")
 
 	     (mkdir-p (string-append out "/lib")))
 
