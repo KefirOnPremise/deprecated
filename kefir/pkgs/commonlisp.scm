@@ -38,7 +38,7 @@
 	 ("autoconf" ,autoconf)
 	 ("automake" ,automake)
 	 ("gcc-toolchain" ,gcc-toolchain)
-	 ("make" ,gnu-make)))
+	 ("gnu-make" ,gnu-make)))
       (arguments
        `(#:modules ((guix build utils))
 	 #:builder
@@ -49,18 +49,19 @@
 		 (out (assoc-ref %outputs "out")))
 	     ;; copy source
              (copy-recursively source ".")
+
+	     ;; patch-shebang phase
+             (setenv "PATH"
+                     (string-append (assoc-ref %build-inputs "libtool") "/bin"
+                                    ":" (assoc-ref %build-inputs "autoconf") "/bin"
+                                    ":" (assoc-ref %build-inputs "automake") "/bin"
+                                    ":" (assoc-ref %build-inputs "gcc-toolchain") "/bin"
+                                    ":" (assoc-ref %build-inputs "gnu-make") "/bin"
+                                    ":" "/run/setuid-programs"
+                                    ":" (getenv "PATH")))
+
 	     (mkdir-p (string-append out "/lib")))
 
-	   ;; patch-shebang phase
-           ;; (setenv "PATH"
-           ;;         (string-append (assoc-ref %build-inputs "libtool") "/bin"
-           ;;                        ":" (assoc-ref %build-inputs "awk") "/bin"
-           ;;                        ":" (assoc-ref %build-inputs "autoconf") "/bin"
-           ;;                        ":" (assoc-ref %build-inputs "automake") "/bin"
-           ;;                        ":" (assoc-ref %build-inputs "gcc-toolchain") "/bin"
-           ;;                        ":" (assoc-ref %build-inputs "make") "/bin"
-           ;;                        ":" "/run/setuid-programs"
-           ;;                        ":" (getenv "PATH")))
 	   ;; (invoke (string-append libtoolize "libtoolize"))
 
 	   #t)))
