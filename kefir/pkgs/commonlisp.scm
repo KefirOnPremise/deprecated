@@ -32,7 +32,7 @@
 	 (sha256
 	  (base32 "0vlhyj4rrkb1bhl1xjf25d1nv09hzpfl6hwymqkn7h6gr2fdp8m1"))))
       (build-system trivial-build-system)
-      (inputs
+      (native-inputs
        `(("libtool" ,libtool)
 	 ("autoconf" ,autoconf)
 	 ("automake" ,automake)
@@ -47,7 +47,7 @@
 		 (libtoolize (assoc-ref %build-inputs "libtool"))
 		 (out (assoc-ref %outputs "out")))
 	     (mkdir-p (string-append out "/lib"))
-	     (invoke (string-append libtoolize "/bin/libtoolize"))
+	     (invoke (string-append libtoolize "/bin/libtoolize") ".")
 	     ;; (invoke "aclocal")
 	     ;; (invoke "autopheader")
 	     ;; (invoke "automake" "-a")
