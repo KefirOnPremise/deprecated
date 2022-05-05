@@ -56,6 +56,14 @@
 		    (replace 'bootstrap
 		      (lambda _
 			(invoke "libtoolize")
+			(invoke "aclocal")
+			(invoke "autoheader")
+			(invoke "automake -a")
+			(invoke "autoconf")
+
+;; ./configure
+;; make
+
 			)))))
       (home-page "")
       (synopsis "")
