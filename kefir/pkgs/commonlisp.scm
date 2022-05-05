@@ -3,6 +3,7 @@
   #:use-module (guix packages)
   #:use-module (guix git-download)
   #:use-module (guix build-system trivial)
+  #:use-module (guix build-system gnu)
   #:use-module (gnu packages autotools)
   #:use-module (gnu packages base)
   #:use-module (gnu packages commencement))
@@ -32,96 +33,48 @@
 	 (file-name (git-file-name name version))
 	 (sha256
 	  (base32 "0vlhyj4rrkb1bhl1xjf25d1nv09hzpfl6hwymqkn7h6gr2fdp8m1"))))
-      (build-system trivial-build-system)
-      (inputs
-       `(("libtool" ,libtool)
-	 ("autoconf" ,autoconf)
-	 ("automake" ,automake)
-	 ("gcc-toolchain" ,gcc-toolchain)
-	 ("gnu-make" ,gnu-make)
-	 ("grep" ,grep)
-	 ("sed" ,sed)))
-      (arguments
-       `(#:modules ((guix build utils))
-	 #:builder
-	 (begin
-           (use-modules (guix build utils))
+      (build-system gnu-build-system)
+      ;; (inputs
+      ;;  `(("libtool" ,libtool)
+      ;; 	 ("autoconf" ,autoconf)
+      ;; 	 ("automake" ,automake)
+      ;; 	 ("gcc-toolchain" ,gcc-toolchain)
+      ;; 	 ("gnu-make" ,gnu-make)
+      ;; 	 ("grep" ,grep)
+      ;; 	 ("sed" ,sed)))
+      ;; (arguments
+      ;;  `(#:modules ((guix build utils))
+      ;; 	 #:builder
+      ;; 	 (begin
+      ;;      (use-modules (guix build utils))
 
-	   (let ((source (assoc-ref %build-inputs "source"))
-		 (out (assoc-ref %outputs "out")))
-	     ;; copy source
-             (copy-recursively source ".")
+      ;; 	   (let ((source (assoc-ref %build-inputs "source"))
+      ;; 		 (out (assoc-ref %outputs "out")))
+      ;; 	     ;; copy source
+      ;;        (copy-recursively source ".")
 
-	     ;; patch-shebang phase
-             (setenv "PATH"
-                     (string-append (assoc-ref %build-inputs "libtool") "/bin"
-                                    ":" (assoc-ref %build-inputs "autoconf") "/bin"
-                                    ":" (assoc-ref %build-inputs "automake") "/bin"
-                                    ":" (assoc-ref %build-inputs "gcc-toolchain") "/bin"
-                                    ":" (assoc-ref %build-inputs "gnu-make") "/bin"
-				    ":" (assoc-ref %build-inputs "grep") "/bin"
-				    ":" (assoc-ref %build-inputs "sed") "/bin"
-                                    ":" "/run/setuid-programs"
-                                    ":" (getenv "PATH")))
+      ;; 	     ;; patch-shebang phase
+      ;;        (setenv "PATH"
+      ;;                (string-append (assoc-ref %build-inputs "libtool") "/bin"
+      ;;                               ":" (assoc-ref %build-inputs "autoconf") "/bin"
+      ;;                               ":" (assoc-ref %build-inputs "automake") "/bin"
+      ;;                               ":" (assoc-ref %build-inputs "gcc-toolchain") "/bin"
+      ;;                               ":" (assoc-ref %build-inputs "gnu-make") "/bin"
+      ;; 				    ":" (assoc-ref %build-inputs "grep") "/bin"
+      ;; 				    ":" (assoc-ref %build-inputs "sed") "/bin"
+      ;;                               ":" "/run/setuid-programs"
+      ;;                               ":" (getenv "PATH")))
 
-	     (invoke "libtoolize")
-	     ;; (invoke "aclocal")
-	     ;; (invoke "automake -a")
-	     ;; (invoke "autoconf")
-	     ;; (invoke "./configure")
-	     ;; (invoke "make")
+      ;; 	     (invoke "libtoolize")
+      ;; 	     ;; (invoke "aclocal")
+      ;; 	     ;; (invoke "automake -a")
+      ;; 	     ;; (invoke "autoconf")
+      ;; 	     ;; (invoke "./configure")
+      ;; 	     ;; (invoke "make")
 
-	     (mkdir-p (string-append out "/lib")))
+      ;; 	     (mkdir-p (string-append out "/lib")))
 
-	   ;; (invoke (string-append libtoolize "libtoolize"))
-
-	   #t)))
-	   ;; (let ((source (assoc-ref %build-inputs "source"))
-	   ;; 	 (libtoolize (assoc-ref %build-inputs "libtool"))
-	   ;; 	 (out (assoc-ref %outputs "out"))
-	   ;; 	 (tmp "/tmp"))
-	   ;;   (mkdir-p (string-append out "/lib"))
-	   ;;   (mkdir-p (string-append tmp "/tmp-" source))
-
-	   ;;   (let ((copyFile (lambda (file)
-	   ;; 		       (copy-file (string-append source "/" file)
-	   ;; 				  (string-append tmp "/" file)))))
-	   ;;     (copyFile "/Makefile.am")
-	   ;;     (copyFile "/configure.ac")
-	   ;;     (mkdir-p (string-append tmp "/src"))
-	   ;;     (copyFile "/src/async-process.asd")
-	   ;;     (copyFile "/src/async-process.c")
-	   ;;     (copyFile "/src/async-process.h")
-	   ;;     (copyFile "/src/async-process.lisp"))
-
-	   ;;   (chdir tmp)
-
-	   ;;   ;; (invoke (string-append libtoolize "/bin/libtoolize"))
-	   ;;   (invoke "ls")
-
-	     ;; (let ((copyFile (lambda (file)
-	     ;; 		       (copy-file (string-append tmp "/" file)
-	     ;; 				  (string-append out "/" file)))))
-	     ;;   (copyFile "/Makefile.am")
-	     ;;   (copyFile "/configure.ac")
-	     ;;   (mkdir-p (string-append out "/src"))
-	     ;;   (copyFile "/src/async-process.asd")
-	     ;;   (copyFile "/src/async-process.c")
-	     ;;   (copyFile "/src/async-process.h")
-	     ;;   (copyFile "/src/async-process.lisp"))
-
-	     ;; (copy-file (string-append tmp "/Makefile.am")
-	     ;; 		(string-append out "/lib" "/Makefile.am"))
-
-	     ;; (invoke (string-append libtoolize "/bin/libtoolize"))
-	     ;; (invoke "aclocal")
-	     ;; (invoke "autopheader")
-	     ;; (invoke "automake" "-a")
-	     ;; (invoke "autoconf")
-	     ;; (invoke "./configure")
-	     ;; (invoke "make")
-	     ;; (copy-file "/.libs/libasyncprocess.so"
-	     ;; 		(string-append out "/lib/"))
+      ;; 	   #t)))
       (home-page "")
       (synopsis "")
       (description
