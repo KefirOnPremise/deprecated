@@ -40,7 +40,8 @@
                     (add-before 'bootstrap 'delete-binaries
                       (lambda* (#:key inputs #:allow-other-keys)
 			(delete-file-recursively "static")
-			(delete-file-recursively "static_old0001-819cbf6")
+			;; (delete-file-recursively "static_old0001-819cbf6")
+			(delete-file-recursively "lnafanofiwn")
 			))
 		    (replace 'bootstrap
 		      (lambda _
