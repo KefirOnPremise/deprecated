@@ -28,21 +28,16 @@
        `(("libtool" ,libtool)
 	 ("autoconf" ,autoconf)
 	 ("automake" ,automake)
-	 ("gcc-toolchain" ,gcc-toolchain)
-	 ("gnu-make" ,gnu-make)))
+	 ("gcc-toolchain" ,gcc-toolchain)))
+	 ;; ("gnu-make" ,gnu-make)))
       (arguments
        '(#:phases (modify-phases %standard-phases
-		    ;; ;; Remove binaries contained in the tarball which are only for the
-		    ;; ;; target and can be regenerated anyway.
-		    ;; '(begin
-		    ;;    (delete-file-recursively "bin")
-		    ;;    #t))
-                    (add-before 'bootstrap 'delete-binaries
+		    ;; Remove binaries contained in the repository which are
+		    ;;  only for the target and can be regenerated anyway.
+                    (add-before 'bootstrap 'remove-binaries
                       (lambda* (#:key inputs #:allow-other-keys)
 			(delete-file-recursively "static")
-			;; (delete-file-recursively "static_old0001-819cbf6")
-			(delete-file-recursively "static_old0001")
-			))
+			(delete-file-recursively "static_old0001-819cbf6")))
 		    (replace 'bootstrap
 		      (lambda _
 			(invoke "libtoolize")
