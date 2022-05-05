@@ -32,7 +32,7 @@
       (arguments
        '(#:phases (modify-phases %standard-phases
 		    ;; Remove binaries contained in the repository which are
-		    ;;  only for the target and can be regenerated anyway.
+		    ;; only for the target and can be regenerated anyway.
                     (add-before 'bootstrap 'remove-binaries
                       (lambda* (#:key inputs #:allow-other-keys)
 			(delete-file-recursively "static")
@@ -44,8 +44,9 @@
 			(invoke "autoheader")
 			(invoke "automake" "-a")
 			(invoke "autoconf"))))))
-      (home-page "")
-      (synopsis "")
+      (home-page "https://github.com/lem-project/async-process")
+      (synopsis "This is another async library")
       (description
-       "")
+       "This library is used in lem text editor.
+To build lem from source code, you need this.")
       (license license:expat))))
