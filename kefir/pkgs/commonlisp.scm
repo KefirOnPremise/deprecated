@@ -41,7 +41,7 @@
                       (lambda* (#:key inputs #:allow-other-keys)
 			(delete-file-recursively "static")
 			;; (delete-file-recursively "static_old0001-819cbf6")
-			(delete-file-recursively "lnafanofiwn")
+			(delete-file-recursively "static_old0001")
 			))
 		    (replace 'bootstrap
 		      (lambda _
