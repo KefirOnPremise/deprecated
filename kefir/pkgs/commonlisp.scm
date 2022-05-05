@@ -29,7 +29,6 @@
 	 ("autoconf" ,autoconf)
 	 ("automake" ,automake)
 	 ("gcc-toolchain" ,gcc-toolchain)))
-	 ;; ("gnu-make" ,gnu-make)))
       (arguments
        '(#:phases (modify-phases %standard-phases
 		    ;; Remove binaries contained in the repository which are
