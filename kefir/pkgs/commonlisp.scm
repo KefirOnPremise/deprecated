@@ -58,7 +58,7 @@
 			(invoke "libtoolize")
 			(invoke "aclocal")
 			(invoke "autoheader")
-			(invoke "automake -a")
+			(invoke "automake" "-a")
 			(invoke "autoconf")
 
 ;; ./configure
