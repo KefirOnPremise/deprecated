@@ -50,9 +50,10 @@
 			(let ((bash (assoc-ref inputs "bash")))
                           (substitute* '("bootstrap")
                             (("\"/bin/sh\"")
-                             (string-append "\"" bash "/bin/sh\""))
-			    (("make copy")
-			     ("")))))))))
+                             (string-append "\"" bash "/bin/sh\"")))
+			  (substitute* '("bootstrap")
+                            (("make copy")
+                             ("")))))))))
       (home-page "")
       (synopsis "")
       (description
