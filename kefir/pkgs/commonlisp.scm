@@ -52,7 +52,11 @@
                             (("\"/bin/sh\"")
 			     "/bin/env bash")
 			    (("make copy")
-                             ""))))))))
+                             "")))))
+		    (replace 'bootstrap
+		      (lambda _
+			(invoke "libtoolize")
+			)))))
       (home-page "")
       (synopsis "")
       (description
