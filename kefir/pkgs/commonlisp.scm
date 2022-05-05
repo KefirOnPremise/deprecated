@@ -32,28 +32,23 @@
 	 ("gnu-make" ,gnu-make)))
       (arguments
        '(#:phases (modify-phases %standard-phases
-                    ;; (add-before 'bootstrap 'patch
-                    ;;   (lambda* (#:key inputs #:allow-other-keys)
-		    ;; 	;; Use the right shell when executing user-provided
-		    ;; 	;; shell commands.
-		    ;; 	(let ((bash (assoc-ref inputs "bash")))
-                    ;;       (substitute* '("bootstrap")
-                    ;;         (("\"/bin/sh\"")
-		    ;; 	     "/bin/env bash")
-		    ;; 	    (("make copy")
-                    ;;          "")))))
+		    ;; ;; Remove binaries contained in the tarball which are only for the
+		    ;; ;; target and can be regenerated anyway.
+		    ;; '(begin
+		    ;;    (delete-file-recursively "bin")
+		    ;;    #t))
+                    (add-before 'bootstrap 'delete-binaries
+                      (lambda* (#:key inputs #:allow-other-keys)
+			(delete-file-recursively "static")
+			(delete-file-recursively "static_old0001-819cbf6")
+			))
 		    (replace 'bootstrap
 		      (lambda _
 			(invoke "libtoolize")
 			(invoke "aclocal")
 			(invoke "autoheader")
 			(invoke "automake" "-a")
-			(invoke "autoconf")
-
-;; ./configure
-;; make
-
-			)))))
+			(invoke "autoconf"))))))
       (home-page "")
       (synopsis "")
       (description
