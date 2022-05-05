@@ -53,7 +53,7 @@
                              (string-append "\"" bash "/bin/sh\"")))
 			  (substitute* '("bootstrap")
                             (("make copy")
-                             (" ")))))))))
+                             ""))))))))
       (home-page "")
       (synopsis "")
       (description
