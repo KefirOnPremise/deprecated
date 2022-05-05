@@ -17,7 +17,6 @@
 ;; ./configure
 ;; make
 
-;; (define-public hosts
 (define-public async-process
   (let ((commit "8f059c6f937be2caad6392d90f685bf35a92a5f2")
         (revision "0"))
@@ -39,42 +38,19 @@
 	 ("autoconf" ,autoconf)
 	 ("automake" ,automake)
 	 ("gcc-toolchain" ,gcc-toolchain)
-	 ("gnu-make" ,gnu-make)
-	 ("grep" ,grep)
-	 ("sed" ,sed)))
-      ;; (arguments
-      ;;  `(#:modules ((guix build utils))
-      ;; 	 #:builder
-      ;; 	 (begin
-      ;;      (use-modules (guix build utils))
-
-      ;; 	   (let ((source (assoc-ref %build-inputs "source"))
-      ;; 		 (out (assoc-ref %outputs "out")))
-      ;; 	     ;; copy source
-      ;;        (copy-recursively source ".")
-
-      ;; 	     ;; patch-shebang phase
-      ;;        (setenv "PATH"
-      ;;                (string-append (assoc-ref %build-inputs "libtool") "/bin"
-      ;;                               ":" (assoc-ref %build-inputs "autoconf") "/bin"
-      ;;                               ":" (assoc-ref %build-inputs "automake") "/bin"
-      ;;                               ":" (assoc-ref %build-inputs "gcc-toolchain") "/bin"
-      ;;                               ":" (assoc-ref %build-inputs "gnu-make") "/bin"
-      ;; 				    ":" (assoc-ref %build-inputs "grep") "/bin"
-      ;; 				    ":" (assoc-ref %build-inputs "sed") "/bin"
-      ;;                               ":" "/run/setuid-programs"
-      ;;                               ":" (getenv "PATH")))
-
-      ;; 	     (invoke "libtoolize")
-      ;; 	     ;; (invoke "aclocal")
-      ;; 	     ;; (invoke "automake -a")
-      ;; 	     ;; (invoke "autoconf")
-      ;; 	     ;; (invoke "./configure")
-      ;; 	     ;; (invoke "make")
-
-      ;; 	     (mkdir-p (string-append out "/lib")))
-
-      ;; 	   #t)))
+	 ("gnu-make" ,gnu-make)))
+      ;; ("grep" ,grep)
+      ;; ("sed" ,sed)))
+      (arguments
+       '(#:phases (modify-phases %standard-phases
+                    (add-before 'bootstrap 'patch
+                      (lambda* (#:key inputs #:allow-other-keys)
+			;; Use the right shell when executing user-provided
+			;; shell commands.
+			(let ((bash (assoc-ref inputs "bash")))
+                          (substitute* '("bootstrap")
+                            (("\"/bin/sh\"")
+                             (string-append "\"" bash "/bin/sh\"")))))))))
       (home-page "")
       (synopsis "")
       (description
