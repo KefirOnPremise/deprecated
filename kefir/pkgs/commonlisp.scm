@@ -8,15 +8,6 @@
   #:use-module (gnu packages base)
   #:use-module (gnu packages commencement))
 
-;; guix shell libtool autoconf automake gcc-toolchain make --
-;; libtoolize
-;; aclocal
-;; autoheader
-;; automake -a
-;; autoconf
-;; ./configure
-;; make
-
 (define-public async-process
   (let ((commit "8f059c6f937be2caad6392d90f685bf35a92a5f2")
         (revision "0"))
@@ -39,20 +30,18 @@
 	 ("automake" ,automake)
 	 ("gcc-toolchain" ,gcc-toolchain)
 	 ("gnu-make" ,gnu-make)))
-      ;; ("grep" ,grep)
-      ;; ("sed" ,sed)))
       (arguments
        '(#:phases (modify-phases %standard-phases
-                    (add-before 'bootstrap 'patch
-                      (lambda* (#:key inputs #:allow-other-keys)
-			;; Use the right shell when executing user-provided
-			;; shell commands.
-			(let ((bash (assoc-ref inputs "bash")))
-                          (substitute* '("bootstrap")
-                            (("\"/bin/sh\"")
-			     "/bin/env bash")
-			    (("make copy")
-                             "")))))
+                    ;; (add-before 'bootstrap 'patch
+                    ;;   (lambda* (#:key inputs #:allow-other-keys)
+		    ;; 	;; Use the right shell when executing user-provided
+		    ;; 	;; shell commands.
+		    ;; 	(let ((bash (assoc-ref inputs "bash")))
+                    ;;       (substitute* '("bootstrap")
+                    ;;         (("\"/bin/sh\"")
+		    ;; 	     "/bin/env bash")
+		    ;; 	    (("make copy")
+                    ;;          "")))))
 		    (replace 'bootstrap
 		      (lambda _
 			(invoke "libtoolize")
