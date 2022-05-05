@@ -34,14 +34,14 @@
 	 (sha256
 	  (base32 "0vlhyj4rrkb1bhl1xjf25d1nv09hzpfl6hwymqkn7h6gr2fdp8m1"))))
       (build-system gnu-build-system)
-      ;; (inputs
-      ;;  `(("libtool" ,libtool)
-      ;; 	 ("autoconf" ,autoconf)
-      ;; 	 ("automake" ,automake)
-      ;; 	 ("gcc-toolchain" ,gcc-toolchain)
-      ;; 	 ("gnu-make" ,gnu-make)
-      ;; 	 ("grep" ,grep)
-      ;; 	 ("sed" ,sed)))
+      (inputs
+       `(("libtool" ,libtool)
+	 ("autoconf" ,autoconf)
+	 ("automake" ,automake)
+	 ("gcc-toolchain" ,gcc-toolchain)
+	 ("gnu-make" ,gnu-make)
+	 ("grep" ,grep)
+	 ("sed" ,sed)))
       ;; (arguments
       ;;  `(#:modules ((guix build utils))
       ;; 	 #:builder
