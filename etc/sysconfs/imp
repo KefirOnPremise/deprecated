@@ -13,10 +13,7 @@
     (guix-configuration
      (inherit config)
      (substitute-urls
-      `("https://bordeaux.guix.gnu.org/")
-      ;; (append (list "https://bordeaux.guix.gnu.org/")
-      ;;         %default-substitute-urls))
-      )
+      `("https://bordeaux.guix.gnu.org/"))
      (authorized-keys
       (append
        (list
