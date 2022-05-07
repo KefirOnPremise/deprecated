@@ -132,6 +132,9 @@ To build lem from source code, you need this.")
 	 ("sbcl-babel" ,sbcl-babel)
 	 ("sbcl-cl-fad" ,sbcl-cl-fad)
          ))
+      (arguments
+       ;; TODO: Tests fail because they require quicklisp to run.
+       `(#:tests? #f))
       (synopsis "")
       (description
        "")
