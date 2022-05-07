@@ -3,6 +3,7 @@
   #:use-module (guix packages)
   #:use-module (guix git-download)
   #:use-module (guix build-system trivial)
+  #:use-module (guix build-system asdf)
   #:use-module (guix build-system gnu)
   #:use-module (gnu packages autotools)
   #:use-module (gnu packages base)
