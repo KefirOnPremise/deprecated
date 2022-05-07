@@ -127,7 +127,7 @@ To build lem from source code, you need this.")
       (build-system asdf-build-system/sbcl)
       (inputs
        `(("sbcl-salza2" ,sbcl-salza2)
-	 ("sbcl-trivial-gray-streams" ,trivial-gray-streams)
+	 ("sbcl-trivial-gray-streams" ,sbcl-trivial-gray-streams)
 	 ("sbcl-babel" ,sbcl-babel)
 	 ("sbcl-cl-fad" ,sbcl-cl-fad)
          ))
