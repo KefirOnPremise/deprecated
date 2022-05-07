@@ -93,6 +93,9 @@ To build lem from source code, you need this.")
        "0r2zcf0jlza6cn8xzm8hc8wdk55m9dfgk4jlv7liwhvivi1jb45y"))
      (file-name (git-file-name name version))))
    (build-system asdf-build-system/sbcl)
+   (inputs
+    `(("sbcl-prove" ,sbcl-prove)
+      ))
    (synopsis "")
    (description
     "")
