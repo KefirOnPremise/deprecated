@@ -96,6 +96,9 @@ To build lem from source code, you need this.")
    (build-system asdf-build-system/sbcl)
    (inputs
     `(("sbcl-prove" ,sbcl-prove)
+      ("sbcl-simple-date-time" ,sbcl-simple-date-time)
+      ("sbcl-split-sequence" ,sbcl-split-sequence)
+      ("sbcl-plump" ,sbcl-plump)
       ))
    (synopsis "")
    (description
