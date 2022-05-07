@@ -8,6 +8,7 @@
   #:use-module (gnu packages autotools)
   #:use-module (gnu packages base)
   #:use-module (gnu packages lisp-check)
+  #:use-module (gnu packages lisp-xyz)
   #:use-module (gnu packages commencement))
 
 (define-public async-process
