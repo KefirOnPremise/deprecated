@@ -64,7 +64,7 @@ To build lem from source code, you need this.")
            (commit (string-append "v" version))))
      (sha256
       (base32
-       "0vlhyj4rrkb1bhl1xjf25d1nv09hzpfl6hwymqkn7h6gr2fdp8m1"))
+       "1dbkm1rn9mbcfh0lsh8fk2347b61jhf8pnhvpsg5z2xbj8wnwz5a"))
      (file-name (git-file-name name version))))
    (build-system asdf-build-system/sbcl)
    ;; (inputs
