@@ -106,3 +106,33 @@ To build lem from source code, you need this.")
     "")
    (home-page "")
    (license license:expat)))
+
+(define-public sbcl-zip
+  ;; named branch is outdated
+  (let ((commit "688b1545dd7a4fe355556768bb03f8bd9b847a87")
+        (revision "1"))
+    (package
+      (name "sbcl-zip")
+      (version (git-version "0.0.0" revision commit))
+      (source
+       (origin
+	 (method git-fetch)
+	 (uri (git-reference
+               (url "https://github.com/bluelisp/zip")
+               (commit commit)))
+	 (sha256
+	  (base32
+	   "0r2zcf0jlza6cn8xzm8hc8wdk55m9dfgk4jlv7liwhvivi1jb45y"))
+	 (file-name (git-file-name name version))))
+      (build-system asdf-build-system/sbcl)
+      (inputs
+       `(("sbcl-salza2" ,sbcl-salza2)
+	 ("sbcl-trivial-gray-streams" ,trivial-gray-streams)
+	 ("sbcl-babel" ,sbcl-babel)
+	 ("sbcl-cl-fad" ,sbcl-cl-fad)
+         ))
+      (synopsis "")
+      (description
+       "")
+      (home-page "")
+      (license license:expat))))
