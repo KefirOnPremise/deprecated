@@ -77,3 +77,24 @@ To build lem from source code, you need this.")
     "")
    (home-page "")
    (license license:expat)))
+
+(define-public sbcl-roswell
+  (package
+   (name "sbcl-roswell")
+   (version "20.06.14.107")
+   (source
+    (origin
+     (method git-fetch)
+     (uri (git-reference
+           (url "https://github.com/roswell/roswell")
+           (commit (string-append "v" version))))
+     (sha256
+      (base32
+       "1dbkm1rn9mbcfh0lsh8fk2347b61jhf8pnhvpsg5z2xbj8wnwz5a"))
+     (file-name (git-file-name name version))))
+   (build-system asdf-build-system/sbcl)
+   (synopsis "")
+   (description
+    "")
+   (home-page "")
+   (license license:expat)))
