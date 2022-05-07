@@ -50,3 +50,29 @@
        "This library is used in lem text editor.
 To build lem from source code, you need this.")
       (license license:expat))))
+
+(define-public sbcl-lem
+  (package
+   (name "sbcl-lem")
+   (version "1.9.2")
+   (source
+    (origin
+     (method git-fetch)
+     (uri (git-reference
+           (url "https://github.com/lem-project/lem")
+           (commit (string-append "v" version))))
+     (sha256
+      (base32
+       ""))
+     (file-name (git-file-name name version))))
+   (build-system asdf-build-system/sbcl)
+   ;; (inputs
+   ;;  `(("alexandria" ,sbcl-alexandria)
+   ;;    ("cl-str" ,sbcl-cl-str)
+   ;;    ("named-readtables" ,sbcl-named-readtables)
+   ;;    ("trivial-gray-streams" ,sbcl-trivial-gray-streams)))
+   (synopsis "")
+   (description
+    "")
+   (home-page "")
+   (license license:expat)))
