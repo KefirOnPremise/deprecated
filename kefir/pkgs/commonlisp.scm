@@ -100,6 +100,7 @@ To build lem from source code, you need this.")
       ("sbcl-simple-date-time" ,sbcl-simple-date-time)
       ("sbcl-split-sequence" ,sbcl-split-sequence)
       ("sbcl-plump" ,sbcl-plump)
+      ("sbcl-zip" ,sbcl-zip)
       ))
    (synopsis "")
    (description
