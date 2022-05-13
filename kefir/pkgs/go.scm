@@ -16,7 +16,7 @@
 	     (commit version)))
        (file-name (git-file-name name version))
        (sha256
-	(base32 "0sly92qjk8jj6z3lpnk76jf9204vdfq7b8jwvkksx9pmd7d0ag15"))))
+	(base32 "1x6kxns48hz1bkq9kyac4zxahzra9c3pd5557z5js6gx6w2fpwam"))))
     (build-system go-build-system)
     (home-page "https://github.com/KefirOnPremise/TestDaemon")
     (synopsis "")
