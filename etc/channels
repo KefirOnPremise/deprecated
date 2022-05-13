@@ -2,7 +2,7 @@
        (name 'guix)
        ;; (url "https://git.savannah.gnu.org/git/guix.git"))
        (url "https://github.com/KefirOnPremise/guix.git")
-       (branch "kefir_add_sbcl_zip"))
+       (branch "master"))
       (channel
        (name 'nonguix)
        (url "https://gitlab.com/nonguix/nonguix")
@@ -14,4 +14,4 @@
       (channel
        (name 'kefir)
        (url "https://github.com/KefirOnPremise/deprecated.git")
-       (branch "main")))
+       (branch "fix_my_emacs_package")))

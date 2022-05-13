@@ -13,10 +13,7 @@
     (guix-configuration
      (inherit config)
      (substitute-urls
-      `("https://bordeaux.guix.gnu.org/")
-      ;; (append (list "https://bordeaux.guix.gnu.org/")
-      ;;         %default-substitute-urls))
-      )
+      `("https://bordeaux.guix.gnu.org/"))
      (authorized-keys
       (append
        (list
@@ -49,8 +46,6 @@
    (list (specification->package "emacs")
 	 (specification->package "emacs-exwm")
 	 (specification->package "emacs-magit")
-	 (specification->package "emacs-vscode-dark-plus")
-	 (specification->package "emacs-sanityinc-tomorrow")
 	 (specification->package "emacs-yasnippet")
 	 (specification->package "emacs-kefir-stuff")
 	 (specification->package

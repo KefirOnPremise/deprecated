@@ -16,7 +16,7 @@
 	     (commit version)))
        (file-name (git-file-name name version))
        (sha256
-	(base32 "0wnf2b3dlj0y5c0y5xs6g53fq7kmw7wm867km2rln3vxgjcwrk6f"))))
+	(base32 "127ii14nilrnnq5046ckh6rm6gky84v4zl3wv74aiqvzpzy52m5v"))))
     (build-system emacs-build-system)
     (home-page "https://github.com/KefirOnPremise/kefir-stuff")
     (synopsis "")
