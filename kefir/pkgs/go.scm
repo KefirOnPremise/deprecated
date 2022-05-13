@@ -2,7 +2,7 @@
   #:use-module ((guix licenses) #:prefix license:)
   #:use-module (guix packages)
   #:use-module (guix git-download)
-  #:use-module (guix build-system go-build-system))
+  #:use-module (guix build-system go))
 
 (define-public emacs-TestDaemon
   (package

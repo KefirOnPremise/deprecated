@@ -14,4 +14,4 @@
       (channel
        (name 'kefir)
        (url "https://github.com/KefirOnPremise/deprecated.git")
-       (branch "fix_my_emacs_package")))
+       (branch "add_test_service")))
