@@ -3,7 +3,8 @@
 		     desktop
 		     networking
 		     ssh
-		     xorg)
+		     xorg
+		     docker)
 
 (define %my-desktop-services
   (modify-services
@@ -39,7 +40,7 @@
 		(group "users")
 		(home-directory "/home/user")
 		(supplementary-groups
-		 '("wheel" "netdev" "audio" "video")))
+		 '("wheel" "netdev" "audio" "video" "docker")))
 	       %base-user-accounts))
  (packages
   (append
@@ -56,6 +57,7 @@
   (append
    (list (service openssh-service-type)
 	 (service tor-service-type)
+	 (service docker-service-type)
 	 (set-xorg-configuration
 	  (xorg-configuration
 	   (keyboard-layout keyboard-layout))))

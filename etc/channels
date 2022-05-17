@@ -14,4 +14,4 @@
       (channel
        (name 'kefir)
        (url "https://github.com/KefirOnPremise/deprecated.git")
-       (branch "master")))
+       (branch "main")))
