@@ -30,6 +30,8 @@
        %default-authorized-guix-keys))))))
 
 (operating-system
+  (initrd-modules (append (list "hv_storvsc" "hv_vmbus")
+                          %base-initrd-modules))
   (locale "en_US.utf8")
   (timezone "Europe/Moscow")
   (keyboard-layout (keyboard-layout "us"))

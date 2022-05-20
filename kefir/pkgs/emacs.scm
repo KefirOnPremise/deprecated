@@ -16,12 +16,11 @@
 	     (commit version)))
        (file-name (git-file-name name version))
        (sha256
-	(base32 "127ii14nilrnnq5046ckh6rm6gky84v4zl3wv74aiqvzpzy52m5v"))))
+	(base32 "0m08k5zmwxnz0limhc5f7wajnf7inc2x4klvy6d1hdjj54wdljcx"))))
     (build-system emacs-build-system)
     (home-page "https://github.com/KefirOnPremise/kefir-stuff")
-    (synopsis "")
-    (description
-     "")
+    (synopsis "my emacs package")
+    (description "my emacs package")
     (license license:gpl3+)))
 
 (define-public emacs-soothe-theme
