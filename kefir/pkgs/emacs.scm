@@ -19,7 +19,7 @@
 	(base32 "1qybljz5rpnjlzbgx19dxds745hkz9ahw0zhmhfzh1i6bbkn91ij"))))
     (build-system emacs-build-system)
     (arguments
-     `(#:include '("\\.el$" "^images/" "^latex/" "\\.info$")))
+     `(#:include '("\\.el$")))
     (home-page "https://github.com/KefirOnPremise/kefir-stuff")
     (synopsis "my emacs package")
     (description "my emacs package")
