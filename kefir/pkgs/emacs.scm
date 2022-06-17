@@ -16,7 +16,7 @@
 	     (commit version)))
        (file-name (git-file-name name version))
        (sha256
-	(base32 "1qybljz5rpnjlzbgx19dxds745hkz9ahw0zhmhfzh1i6bbkn91ij"))))
+	(base32 "1qybljz5rpnjlzbgx19dxds745hkz9ahw0zhmhfzh1i6bbkn91in"))))
     (build-system emacs-build-system)
     (arguments
      `(#:include '("\\.el$")))
