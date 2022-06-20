@@ -7,7 +7,7 @@
 (define-public emacs-kefir-stuff
   (package
     (name "emacs-kefir-stuff")
-    (version "add_backup")
+    (version "v1")
     (source
      (origin
        (method git-fetch)
