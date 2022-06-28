@@ -4,6 +4,7 @@
   #:use-module (gnu services networking)
   #:use-module (gnu services ssh)
   #:use-module (gnu services xorg)
+  #:use-module (kefir pkgs emacs)
   #:export (my-system-supplementary-groups
 	    my-system-packages
 	    my-system-services))
