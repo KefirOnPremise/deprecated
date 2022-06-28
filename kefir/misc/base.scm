@@ -1,5 +1,5 @@
 (define-module (kefir misc base)
-  #:export (my-system-packages))
+  #:export (system-packages))
 
 (define system-packages
   '("emacs"
