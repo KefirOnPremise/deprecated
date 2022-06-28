@@ -102,10 +102,10 @@
  )")
 
 (define %kefir-desktop-packages
-  '((list (specification->package "emacs")
-          (specification->package "emacs-exwm")
-          (specification->package
-           "emacs-desktop-environment")
-	  (specification->package "emacs-magit")
-	  (specification->package "emacs-kefir-stuff")
-          (specification->package "nss-certs"))))
+  '(list (specification->package "emacs")
+         (specification->package "emacs-exwm")
+         (specification->package
+          "emacs-desktop-environment")
+	 (specification->package "emacs-magit")
+	 (specification->package "emacs-kefir-stuff")
+         (specification->package "nss-certs")))
