@@ -1,7 +1,7 @@
 (define-module (kefir misc base)
   #:export (my-system-packages))
 
-(define my-system-packages
+(define system-packages
   '("emacs"
     "emacs-exwm"
     "emacs-magit"
