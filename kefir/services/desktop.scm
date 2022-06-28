@@ -22,7 +22,8 @@
   #:use-module (gnu system keyboard)
   #:export (%kefir-desktop-services
 	    %my-desktop-services
-	    %bordeaux-public-key))
+	    %bordeaux-public-key
+	    %kefir-desktop-packages))
 
 (define* (desktop-services-for-system #:optional
                                       (system (or (%current-target-system)
