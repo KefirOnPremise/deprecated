@@ -19,7 +19,7 @@
   #:use-module (gnu services ssh)
   #:use-module (gnu services docker)
   #:use-module (gnu system setuid)
-  #:use-module   (gnu system keyboard)
+  #:use-module (gnu system keyboard)
   #:export (%kefir-desktop-services
 	    %my-desktop-services
 	    %bordeaux-public-key))
@@ -99,3 +99,12 @@
   (q #7D602902D3A2DBB83F8A0FB98602A754C5493B0B778C8D1DD4E0F41DE14DE34F#)
   )
  )")
+
+(define %kefir-desktop-packages
+  '((list (specification->package "emacs")
+          (specification->package "emacs-exwm")
+          (specification->package
+           "emacs-desktop-environment")
+	  (specification->package "emacs-magit")
+	  (specification->package "emacs-kefir-stuff")
+          (specification->package "nss-certs"))))
