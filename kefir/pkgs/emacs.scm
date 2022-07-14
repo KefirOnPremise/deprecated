@@ -45,6 +45,31 @@
      (arguments
       `(#:include '("\\.el$" "\\.info$" "\\.texi$")))
      (home-page "https://github.com/webframp/sicp-info")
-     (synopsis "")
-     (description "")
+     (synopsis "Stucture and Interpretation of Computer Progams in info format")
+     (description "After the installation, Sicp will appear in Info, the documentation browser.")
      (license #f))))
+
+(define-public emacs-soothe-theme
+  ;; there is no named branch
+  (let ((commit "0786fe70c6c1b4ddcfb932fdc6862b9611cfc09b")
+	(revision "0"))
+    (package
+     (name "emacs-soothe-theme")
+     (version "20141027.2233")
+     (source
+      (origin
+       (method git-fetch)
+       (uri (git-reference
+	     (url "https://github.com/emacsfodder/emacs-soothe-theme")
+	     (commit commit)))
+       (file-name (git-file-name name version))
+       (sha256
+	(base32 "10gh1hvxq9gm29r6qzlnva7vjidd7n4kih4z2ihyvbvy9za20xqw"))))
+     (build-system emacs-build-system)
+     (home-page "https://github.com/emacsfodder/emacs-soothe-theme.git")
+     (synopsis "Colorful, but muted theme for Emacs, dark background with light text")
+     (description
+      "Soothe theme is an amalgam  of muted color tones and highlighted backgrounds.  It has
+builtin support for rainbow-delimiters, org-mode, whitespace-mode, ECB, flyspell, ido, linum, highlight
+indentation, show-paren-mode.")
+     (license license:gpl3))))
